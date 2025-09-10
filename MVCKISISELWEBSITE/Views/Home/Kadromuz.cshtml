@@ -1,0 +1,21 @@
+﻿@model List<Kadromuz>
+@{
+    ViewData["Title"] = "Kadromuz";
+}
+<h6>Kadromuz</h6>
+
+<div class="container">
+    <div class="row">
+        
+        @foreach (var item in Model)
+        {
+            <div class="col-4 p-2">
+                <img style="width:75%" class="rounded-3 img-thumbnail" src="@item.Yol" />
+                <label style="text-align:center">@item.Ad  @item.Soyad</label>
+                <br />
+                <label style="text-align:center">@item.Unvan</label>
+                <br />
+            </div>
+        }
+    </div>
+</div>

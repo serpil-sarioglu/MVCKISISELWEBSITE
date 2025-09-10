@@ -1,0 +1,27 @@
+﻿@model List<Makaleler>
+@{
+    ViewData["Title"] = "Makaleler";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            @await Component.InvokeAsync("MakaleList")
+            
+        </div>
+        <div class="col-md-8" style="text-align:justify">
+            @foreach (var item in Model)
+            {
+                <h4>@item.Baslik</h4>
+                <p>
+                    <truncate text="@item.Icerik" length="50"></truncate>
+                </p>
+              
+                <a href="@Url.Action("MakalelerDetay", "Home", new { id = item.Id })" class="btn btn-default">Devamını Oku...</a>
+          
+                <hr />               
+            }
+        </div>
+    </div>
+</div>

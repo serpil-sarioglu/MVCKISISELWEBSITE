@@ -1,0 +1,63 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Anasayfa";
+}
+
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        @for (int i = 0; i < Model.Sliders.Count; i++)
+        {
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="@(i==0?"active":"")" aria-label="Slide @(i+1)"></button>
+
+        }
+    </div>
+    <div class="carousel-inner">
+       
+        @{
+            string parametre = "active";
+        }
+        @foreach (var item in Model.Sliders)
+        {
+            <div class="carousel-item @parametre">
+                <img src="@item.Yol" class="d-block w-100" alt="...">
+            </div>
+            parametre = "";
+        }
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container overflow-hidden mt-5">
+    <div class="row gy-5">
+        @foreach (var item in Model.CalismaAlanlaris)
+        {
+            <div class="col-6">
+                <div class="p-3 border bg-light">
+                    <h5>@item.Baslik</h5>
+                    <truncate  text="@item.Icerik" length="30"></truncate>
+                    
+                </div>
+            </div>
+        }
+        
+    </div>
+</div>
+
+
+<div class="row g-0 mt-5">
+    @foreach (var item in Model.Videos)
+    {
+        <div class="col-md-4 text-center p-2 video">
+            @Html.Raw(item.Yol)
+        </div>
+    }
+</div>

@@ -1,0 +1,10 @@
+﻿@model List<Makaleler>
+<ul class="list-group">
+    <li class="list-group-item active" aria-current="true">Yayımlanan Makaleler</li>
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            <a href="@Url.Action("MakalelerDetay","Home",new {id=item.Id})">@item.Baslik</a>
+        </li>
+    }
+</ul>

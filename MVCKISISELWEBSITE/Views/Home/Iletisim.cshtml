@@ -1,0 +1,85 @@
+﻿@model GenelBilgi
+@{
+    ViewData["Title"] = "İletişim";
+}
+<h6>İletişim</h6>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 p-2 mt-5">
+            <p style="font-weight:bold">İletişim Detayları</p>
+            <p><i style="font-size:15pt;color:black" class="fa-solid fa-map-location"></i>  @Model.Adres</p>            
+            <p><i style="font-size:15pt;color:black" class=" fa-solid fa-phone-flip"></i>   @Model.Telefon</p>
+            
+            @* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48285.66885707238!2d31.152598499999996!3d40.8531225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x409da01b6536d421%3A0xe1d0a622568cf8d7!2zRMO8emNlLCBEw7x6Y2UgTWVya2V6L0TDvHpjZQ!5e0!3m2!1str!2str!4v1712220262190!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> *@
+            <hr />
+            @await Component.InvokeAsync("SocialIconList")
+        @*     
+            <a target="_blank" href="@Model.Facebook"><i style="font-size:30pt; color:#3B5998" class="fa-brands fa-square-facebook"></i></a>
+            <a target="_blank" href="@Model.Instagram"><i style="font-size:30pt; color: #125688" class="fa-brands fa-square-instagram"></i></a>
+            <a target="_blank" href="@Model.Youtube"><i style="font-size:30pt; color:#bb0000" class="fa-brands fa-square-youtube"></i></a>
+       *@
+           
+        </div>
+        <div class="col-6 p-2 mt-5">
+            <p style="font-weight:bold">Mesajınız</p>           
+            <form id="myForm">
+                  <div class="form-group mt-3">
+                    <label for="mail">Email:</label>
+                    <input type="text" class="form-control" id="mail" name="mail" placeholder="Email adresinizi yazınız">    
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="adSoyad">Adınız Soyadınız:</label>
+                    <input type="text" class="form-control" id="adSoyad" name="adSoyad" placeholder="Adınızı soyadınızı yazınız">    
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="konu">Konu:</label>
+                    <input type="text" class="form-control" id="konu" name="konu" placeholder="Konuyu yazınız">    
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="mesaj">Mesajınız:</label>
+                    <textarea type="text" class="form-control" id="mesaj" name="mesaj" placeholder="Mesajınızı yazınız"></textarea>
+                  </div>
+                   <button type="button" class="btn btn-primary mt-3" id="submitBtn">Gönder</button>
+             </form>
+             <div id="result"></div>
+        </div>
+    </div>
+</div>
+            @* <form id="myForm">
+                <input type="text" id="mail" name="mail" /><br />
+                <input type="text" id="adSoyad" name="adSoyad" /><br />
+                <input type="text" id="konu" name="konu" /><br />
+                <input type="text" id="mesaj" name="mesaj" /><br />
+                <button type="button" id="submitBtn">Gönder</button>                
+            </form> *@
+        
+ 
+@section Scripts{
+<script>
+    $(document).ready(function () {
+        $('#submitBtn').click(function () {
+            var formData = {
+                    mail: $('#mail').val(),
+                    adSoyad: $('#adSoyad').val(),
+                    konu: $('#konu').val(),
+                    mesaj: $('#mesaj').val(),
+            }
+
+            $.ajax({
+                url: '/Home/mesaj',
+                type: 'POST',
+                dataType: 'json',
+                data: { formData: formData },
+                success: function (response) {
+                    // console.log(response);
+                    $('#result').text(response);
+                },
+                error: function () {
+                    $('#result').text('Form gönderilirken hata oluştu');
+                }
+            });
+        });
+    });
+</script>
+}

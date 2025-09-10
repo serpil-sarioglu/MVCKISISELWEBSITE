@@ -1,0 +1,31 @@
+﻿@model List<string>
+@{
+    Layout = "/views/shared/_layoutadmin.cshtml";
+
+    ViewData["Title"] = "Sunucuda Yüklü Dosyalar";
+}
+<h2>Dosyalarım Sayfası</h2>
+
+@* sunucudaki resimleri göster *@
+@foreach (var f in Model)
+{
+
+    <img src="/img/@f" style="padding:5px; max-width: 200px; max-height: 200px;" />
+    <br />
+    @* <a href="@Url.Action("DosyalarimSil", "Admin", new { fileName = @f })" onclick="return confirm('Bu dosyayı silmek istediğinize emin misinz?');">Sil</a> *@
+    <br />
+    <form asp-action="DosyalarimSil" method="post">
+        <input type="hidden" name="fileName" value="@f" />
+        <button type="submit">Sil</button>
+    </form>
+}
+
+@* dosyadan yeni resim ekle *@
+<form asp-action="Dosyalarim" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file">Dosya Seç:</label>
+        <input type="file" name="file" id="file" class="form-control-file" />
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
+

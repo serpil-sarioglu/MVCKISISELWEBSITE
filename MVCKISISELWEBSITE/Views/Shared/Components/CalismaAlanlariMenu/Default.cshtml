@@ -1,0 +1,16 @@
+﻿@model List<CalismaAlanlari>
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Çalışma Alanları
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a class="dropdown-item" href="@Url.Action("CalismaAlanlari","Home",new {id=item.Id})">@item.Baslik</a>
+            </li>
+
+        }
+    </ul>
+</li>

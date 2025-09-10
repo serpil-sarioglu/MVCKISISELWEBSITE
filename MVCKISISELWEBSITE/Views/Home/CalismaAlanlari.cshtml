@@ -1,0 +1,25 @@
+﻿@model List<CalismaAlanlari>
+@{
+    ViewData["Title"] = "Çalışma Alanları";
+}
+<h6>Çalışma Alanları >  @ViewBag.Baslik</h6>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item active" aria-current="true">Çalışma Alanları</li>
+                @foreach (var item in Model)
+                {
+                    <li class="list-group-item">
+                        <a href="@Url.Action("CalismaAlanlari","Home",new {id=item.Id})">@item.Baslik</a>                        
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-8" style="text-align:justify">             
+            @ViewBag.Icerik
+        </div>
+    </div>
+</div>
+@* url/home/calismaalanlari/2 *@

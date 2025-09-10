@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MVCKISISELWEBSITE.DAL.Slider>
+
+    
+@{
+    Layout = "/views/shared/_layoutadmin.cshtml";
+    ViewData["Title"] = "Index";
+}
+<h1>Slider Yönetimi</h1>
+<p>
+    <a asp-action="Create">Yeni Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Yol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sira)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AktifMi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.OrderBy(h=>h.Sira)) {
+        <tr>
+            <td>
+                @* @Html.DisplayFor(modelItem => item.Yol) *@
+                    <img width="100" src="@item.Yol" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sira)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AktifMi)
+            </td>
+            <td class="text-end">
+                <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Detay</a> |
+                <a class="btn btn-warning" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
