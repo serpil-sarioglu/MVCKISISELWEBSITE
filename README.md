@@ -1,21 +1,25 @@
-Tanıtım:
+**Tanıtım:**
 
 ASP.NET Core Web App(MVC) projesi.
 Entity Framework Core kullanıldı.
 (Code First From Database Yöntemi kullanıldı. Bu yöntemle Scaffold-DbContext komutunu kullanarak var olan veri tabanından DbContext ve ilişkili model sınıfları otomatik oluşur. )
+
 Kurulan paketler:
- Microsoft.EntityFrameworkCore.SqlServer
- Microsoft.EntityFrameworkCore.Design
- Microsoft.EntityFrameworkCore.Tools
+
+*  Microsoft.EntityFrameworkCore.SqlServer
+*  Microsoft.EntityFrameworkCore.Design
+*  Microsoft.EntityFrameworkCore.Tools
+ 
 PM Console da yazılan komut:
-Scaffold-DbContext "data source=.;initial catalog=KISISELWEBSITE;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework;TrustServerCertificate=true" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DAL
+ 
+*  Scaffold-DbContext "data source=.;initial catalog=KISISELWEBSITE;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework;TrustServerCertificate=true" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DAL
 
 Ana sayfada slider, çalışma alanları, videolar listelerinin olduğu view model kullanılıyor. Ana sayfada TruncateTagHelper kullanılarak çalışma alanlarını gösteren içerik metni kısaltıldı. 
 Çalışma alanları sayfasında viewbag kullanılarak içerik,başlık listelendi.  
 Makaleler sayfasında viewcomponent ile yayımlanan makaleler listeleniyor. Makale detaylarında makalelerin like-dislike ikonu ile beğeni sayısı takip edilir. 
 İletişim sayfasında form alanında post metotlu mesaj actionı çalışır form bilgileri veritabanına kaydedilir.
 
-Kişisel Blog Web Sitesi sayfaları:
+**Kişisel Blog Web Sitesi sayfaları:**
 
 Ana Sayfa
  
